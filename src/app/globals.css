@@ -3,28 +3,15 @@
 /* ---- Design tokens -------------------------------------------------------
    Gold accent ties the personal site to the ALABSGOLD studio brand.
    Light theme is the fallback; dark follows the OS preference. */
+/* Same palette as the home page (public/index.html, taste-skill "three-stones" + ALABSGOLD gold). */
 :root {
-  --bg: #faf8f3;
-  --surface: #ffffff;
-  --text: #15171c;
-  --muted: #5a6070;
-  --line: #e6e1d6;
+  --bg: #eeecea;
+  --surface: #e4e1dd;
+  --text: #333231;
+  --muted: #605f5e;
+  --line: rgb(51 50 49 / 0.14);
   --accent: #9a6f0c;
   --accent-soft: rgb(154 111 12 / 0.1);
-  --grid: rgb(154 111 12 / 0.07);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0a0d14;
-    --surface: #10141d;
-    --text: #e7e9ee;
-    --muted: #8d95a8;
-    --line: #1f2533;
-    --accent: #e3b54f;
-    --accent-soft: rgb(227 181 79 / 0.12);
-    --grid: rgb(227 181 79 / 0.045);
-  }
 }
 
 @theme inline {
@@ -35,8 +22,8 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-text);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 html {
@@ -45,13 +32,15 @@ html {
 
 body {
   background-color: var(--bg);
-  /* Blueprint grid: the studio's "systems" signature. */
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 48px 48px;
   color: var(--text);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-text), system-ui, sans-serif;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 ::selection {
@@ -121,7 +110,7 @@ body {
   color: var(--accent);
 }
 .prose code {
-  font-family: var(--font-geist-mono), monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.9em;
   background: var(--accent-soft);
   color: var(--text);

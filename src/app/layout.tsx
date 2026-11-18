@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Source_Serif_4, Libre_Franklin } from "next/font/google";
 import { site, absoluteUrl } from "@/lib/site";
 import { education, experience } from "@/lib/data";
 import { JsonLd } from "@/components/json-ld";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+// The same pairing the taste-skill dealt for the home page (Source Serif 4 / Libre Franklin).
+const display = Source_Serif_4({ variable: "--font-display", subsets: ["latin"] });
+const text = Libre_Franklin({ variable: "--font-text", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -39,10 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf8f3" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0d14" },
-  ],
+  themeColor: "#eeecea",
 };
 
 // schema.org Person: helps search engines connect the name, studio and school.
@@ -63,7 +61,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" className={`${display.variable} ${text.variable} antialiased`}>
       <body className="min-h-screen">
         <a
           href="#content"

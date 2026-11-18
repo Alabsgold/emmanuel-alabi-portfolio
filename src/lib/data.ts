@@ -119,7 +119,6 @@ export const projects: Project[] = [
     oneLiner:
       "Departmental dues platform where students pay through Paystack and payments verify themselves. No more screenshots as proof.",
     stack: ["Django", "Django REST Framework", "React", "Vite", "Paystack", "GitHub Actions"],
-    live: "https://dpt-pay-system.vercel.app",
     repo: "https://github.com/Alabsgold/DPT-pay-system",
     featured: true,
     award: "NACOS National Build Challenge",
@@ -153,7 +152,6 @@ export const projects: Project[] = [
     oneLiner:
       "DNS-level threat protection and parental control. Gemini AI scores unknown domains in real time to catch zero-day phishing and malware.",
     stack: ["TypeScript", "Gemini AI", "DNS"],
-    live: "https://nira-xt-guardian-2.vercel.app",
     repo: "https://github.com/Alabsgold/NIRA-XT_Guardian_2",
     featured: true,
     award: "1st place · NiRA-XT Hackathon",

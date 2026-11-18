@@ -1,0 +1,27 @@
+Every university department I know collects money the same way. A treasurer posts an account number, students transfer, and then everyone sends a screenshot "as proof".
+
+It feels like it works, but it doesn't.
+
+## What's wrong with screenshot proof
+
+- **Anyone can edit an image.** A screenshot proves only that someone had a picture.
+- **Reconciliation is manual.** The treasurer matches names to bank alerts in a spreadsheet, usually late at night.
+- **Nobody knows who hasn't paid.** The system only learns about a student once they pay, so there's no list of who still owes.
+
+## Flip the source of truth
+
+For [DPT Pay](/projects/dpt-pay) the rule was simple: **the server decides whether a payment happened, never the payer.**
+
+1. The department creates a contribution: dues, an event fee, a shirt, an excursion.
+2. Admins import the class list *before* anyone pays, so the system knows who owes from day one.
+3. Students pay through Paystack. The backend confirms the transaction with Paystack itself before marking anything as paid.
+
+The student's word, the image and the browser are never trusted. Only the payment provider's confirmation counts.
+
+## Tests are the product
+
+Money code gets one chance to be wrong. The backend shipped with **333 tests** and CI on every push, because "it worked when I clicked it" isn't a standard you can hand to a treasurer.
+
+## The takeaway
+
+Whenever a workflow asks a human to *prove* something to another human, ask whether a system can confirm it directly instead. Usually it can, and that's where software earns its keep.

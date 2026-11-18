@@ -4,7 +4,8 @@
 // sitemap entry and RSS link follows automatically.
 
 export const site = {
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://emmanuel-alabi.vercel.app").replace(/\/$/, ""),
+  // Note: emmanuel-alabi.vercel.app belongs to someone else; this project is emmanuel-alabi-portfolio.
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://emmanuel-alabi-portfolio.vercel.app").replace(/\/$/, ""),
   name: "Emmanuel Alabi",
   shortName: "Alabsgold",
   title: "Founder & Lead Systems Engineer at ALABSGOLD",

@@ -1,5 +1,7 @@
 # Emmanuel Alabi: Portfolio & Blog
 
+**Live:** https://emmanuel-alabi-portfolio.vercel.app
+
 Personal site of **Emmanuel Alabi (Alabsgold)**, founder & lead systems engineer at [ALABSGOLD](https://alabsgold.vercel.app).
 
 Built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS v4** and **MDX**. Every page is pre-rendered as static HTML.

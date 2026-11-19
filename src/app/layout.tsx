@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#eeecea",
+  themeColor: "#07090d",
 };
 
 // schema.org Person: helps search engines connect the name, studio and school.

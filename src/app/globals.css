@@ -1,17 +1,185 @@
 @import "tailwindcss";
 
 /* ---- Design tokens -------------------------------------------------------
-   Gold accent ties the personal site to the ALABSGOLD studio brand.
-   Light theme is the fallback; dark follows the OS preference. */
-/* Same palette as the home page (public/index.html, taste-skill "three-stones" + ALABSGOLD gold). */
+   Night ground of the 3D "systems world" with the ALABSGOLD gold as the one accent.
+   Every page (home, blog, projects) shares these. */
 :root {
-  --bg: #eeecea;
-  --surface: #e4e1dd;
-  --text: #333231;
-  --muted: #605f5e;
-  --line: rgb(51 50 49 / 0.14);
-  --accent: #9a6f0c;
-  --accent-soft: rgb(154 111 12 / 0.1);
+  --bg: #07090d;
+  --surface: #10141c;
+  --text: #ece8df;
+  --muted: #a3a29c;
+  --line: rgb(236 232 223 / 0.12);
+  --accent: #e3b54f;
+  --accent-soft: rgb(227 181 79 / 0.12);
+}
+
+/* ---- 3D home page ------------------------------------------------------------ */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+}
+.shell {
+  width: min(100% - 3rem, 76rem);
+  margin-inline: auto;
+}
+.screen {
+  position: relative;
+  min-height: 100svh;
+  padding-block: 6rem;
+}
+.scene-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+.scene-layer canvas {
+  position: absolute !important;
+  inset: 0;
+}
+/* keeps the left (text) side calm over the 3D scene at every scroll position */
+.scene-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgb(7 9 13 / 0.82) 0%, rgb(7 9 13 / 0.45) 38%, transparent 62%);
+}
+@media (max-width: 767px) {
+  .scene-layer::after {
+    background: rgb(7 9 13 / 0.55);
+  }
+}
+.scene-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 72% 45%, rgb(227 181 79 / 0.28), transparent 32%),
+    radial-gradient(circle at 70% 46%, rgb(227 181 79 / 0.12), transparent 55%),
+    var(--bg);
+}
+.site-nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  background: rgb(7 9 13 / 0.55);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-link {
+  transition: color 0.2s;
+}
+.nav-link:hover {
+  color: var(--text);
+}
+.eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.panel {
+  background: rgb(10 13 19 / 0.66);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+.card {
+  background: rgb(236 232 223 / 0.04);
+  border: 1px solid var(--line);
+  border-radius: 0.875rem;
+  padding: 1.25rem;
+}
+.card-link {
+  transition: transform 0.25s, border-color 0.25s, background 0.25s;
+}
+.card-link:hover {
+  transform: translateY(-3px);
+  border-color: rgb(227 181 79 / 0.55);
+  background: rgb(227 181 79 / 0.06);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: 1.25rem;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-gold {
+  background: var(--accent);
+  color: #1a1305;
+}
+.btn-gold:hover {
+  background: #f0c867;
+}
+.btn-ghost {
+  border: 1px solid var(--line);
+  background: rgb(236 232 223 / 0.04);
+}
+.btn-ghost:hover {
+  border-color: rgb(227 181 79 / 0.6);
+}
+.link-arrow {
+  color: var(--accent);
+  font-weight: 500;
+}
+.link-arrow:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  width: 1.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  translate: -50% 0;
+}
+.scroll-cue span {
+  position: absolute;
+  left: 50%;
+  top: 0.5rem;
+  width: 3px;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--accent);
+  translate: -50% 0;
+  animation: cue 1.8s ease-in-out infinite;
+}
+@keyframes cue {
+  50% {
+    top: 1.4rem;
+    opacity: 0.3;
+  }
+}
+/* labels drei <Html> pins to the stack nodes */
+.node-label {
+  pointer-events: none;
+  white-space: nowrap;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.node-label span {
+  display: block;
+  font-size: 13px;
+  color: var(--text);
+}
+.node-label small {
+  display: block;
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
 }
 
 @theme inline {
@@ -57,6 +225,9 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .scroll-cue span {
+    animation: none;
   }
   * {
     transition: none !important;
